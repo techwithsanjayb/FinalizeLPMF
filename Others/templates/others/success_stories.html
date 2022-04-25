@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block success_stories %}
+
+
+
+<div class="container" >
+<form method="POST">
+{% csrf_token %}
+{% for cat in category %}
+{{cat.label_tag}}{{cat}}
+{% endfor %}
+    <input type='submit' value="Filter"></input> 
+    <span>&nbsp;</span>
+</form>
+<a href="/success-stories"><button>Reset Results</button></a>
+<div class="row">
+  {% for item in post_list %}  
+      <div class="col-6">
+      <h4><b>{{item.success_stories_heading_name}}</b></h4>
+      <p><a href="{{item.success_stories_link}}" target="_blank">{{item.success_stories_link}}</a></p>
+      <p><h5>Discription :</h5>{{item.success_stories_discription}}</p>
+      <p><h5>Created on :</h5>{{item.success_stories_created_date}}</p>
+      <p><h5>Last Updated on :</h5>{{item.success_stories_last_updated_date}}</p>
+      <img src = "{% static 'others/success_stories_images/' %}{{item.success_stories_imagelink}}" width="500px" height="300px"/>
+      <p><h5>success_stories_published_date :</h5>{{item.success_stories_last_updated_date}}</p>
+      </div>
+  {% endfor %}  
+</div> 
+</div>
+
+{% if post_list.has_other_pages %} 
+    <ul class = "pagination justify-content-center">
+    {% if post_list.has_previous %}
+        <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; PREV</a></li>
+    {% endif %}
+
+    {% for i in post_list.paginator.page_range %}
+      {% if post_list.number == i %}
+        <li class="page-link"><a href="?page={{ i }}"><span>{{ i }} </span></a></li>
+      {% else %}
+        <li class="page-link"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if post_list.has_next %}
+          <li><a href="?page={{post_list.next_page_number}}" class="page-link">NEXT &raquo; </a></li>
+    {% endif %}
+    </ul>    
+{% endif %}
+
+
+
+
+{% endblock %}

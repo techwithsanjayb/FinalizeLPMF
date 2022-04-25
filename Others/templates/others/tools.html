@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block tools %}
+
+<!-- TOOLS LIST DISPLAYING CODE -->
+<div class="container" xmlns="http://www.w3.org/1999/html"><br/>
+<h2><strong>TOOLS LIST </strong></h2><br/>
+
+<form method="POST">
+{% csrf_token %}
+{% for cat in category %}
+{{cat.label_tag}}{{cat}}
+{% endfor %}
+    <input type='submit' value="Filter"></input> <span>&nbsp;</span><a href="/toolswithcategory/"><button>Reset Results</button></a>
+</form>
+
+{% for item in post_list %}
+    <div class="row">
+    <div class = "col-12">
+    <h4><b>{{item.tool_heading_name}}</b></h4>
+    <p><h5>Discription :</h5> {{item.tool_discription}}</p>
+    </div>
+    <div class = "row">
+    <div class = col-4>
+    <p><h5>Category type :</h5> {{item.tool_category}}</p>
+    </div>
+    <div class = col-4>
+    <p><h5>Version Number :</h5> {{item.tool_version_number}}</p>
+    </div>
+    <div class = col-4>
+    <p><h5>File Size :</h5>{{item.tool_file_size}}</p>
+    </div>
+    </div>
+
+    <div class = "row">
+    <div class = col-4>
+    <p><h5>Support Document :</h5>{{item.tool_support_document_link}}</p>
+    </div>
+    <div class = col-4>
+     <p><h5>Download :</h5><a href = "{% static 'others/tool/' %}{{item.tool_download_link}}.zip">{{ item.tool_download_link }}</a></p>
+    </div>
+    <div class = col-4>
+        <p><h5>Uploaded Date</h5> {{item.tool_tool_uploaded_date}}</p>
+
+   </div>
+    </div>
+    </div>
+    
+{% endfor %}
+</div>
+
+<!-- END OF DISPLAYING LIST OF TOOLS -->
+
+ <!--PAGINATION LINK-->
+
+{% if post_list.has_other_pages %} 
+    <ul class = "pagination justify-content-center">
+    {% if post_list.has_previous %}
+        <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; PREV</a></li>
+    {% endif %}
+
+    {% for i in post_list.paginator.page_range %}
+      {% if post_list.number == i %}
+        <li class="page-link"><a href="?page={{ i }}"><span>{{ i }} </span></a></li>
+      {% else %}
+        <li class="page-link"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if post_list.has_next %}
+          <li><a href="?page={{post_list.next_page_number}}" class="page-link">NEXT &raquo; </a></li>
+    {% endif %}
+    </ul>    
+{% endif %}
+{% endblock %}

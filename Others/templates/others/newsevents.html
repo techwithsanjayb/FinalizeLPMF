@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block newsandevents %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html"><br/>
+<h2><strong>News & Events </strong></h2><br/>
+
+
+{% for item in dataobj %}
+    <div class="row">
+        <div class = "col-12"> 
+                <h3> {{item.news_events_detail}}</h3>
+                <h5>Click on <a href="{{item.news_events_link}}">{{item.news_events_link}}</a> to get details</h5><br/>
+                
+         </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

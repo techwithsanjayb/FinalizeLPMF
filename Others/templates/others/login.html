@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block register %}
+
+<div style="margin-left:auto;margin-right:auto;">
+<br/>
+  <div style="margin-left:auto;margin-right:auto;width:300px;height:300px" >
+  <h2 style="text-align:center">Login </h2>
+  <form method="post">
+    {% csrf_token %}
+  {% for fm in loginform %}
+    {{fm.label_tag}}{{fm}}{{fm.errors}}<br/><br/>
+  {% endfor %}
+  <button style="margin-left:auto;margin-right:auto; " type="submit">Login</button>
+  </form>
+  </div>
+</div>
+
+{% endblock %}

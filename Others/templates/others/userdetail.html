@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block Individualprofile %}
+<h1 style="text-align:center">Profile Details</h1>
+
+<form method="POST" novalidate>
+{% csrf_token %}
+<table border = 0 px ; style="margin-left:auto;margin-right:auto">
+{% for fm in fm %}
+<tr>
+    <td>{{fm.label_tag}}</td>
+    <td>{{fm}}</td>
+    <td>{{fm.errors}}</td>
+</tr>
+{%endfor%}
+<tr><td style="text-align:center" colspan=2><a style="text-align:center" href="{% url 'profile' %}"><font style="font-size:20px">Back to Profile</font></a>
+<br/></td></tr>
+</table>
+<br/>
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}

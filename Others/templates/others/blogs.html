@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block blogs %}
+<div class="container" xmlns="http://www.w3.org/1999/html"><br/>
+<h2><strong>Blogs : </strong></h2><br/>
+
+{% for item in dataobj %}
+    <div class="row">
+        <div class = "col-12"> 
+                <h3> {{item.blogs_heading}}</h3>
+                <h5>Discription : </h5><p>{{item.blogs_content}}</p>
+                <h5>Author Name : </h5><p>{{item.blogs_author_name}}</p>
+                <h5>Created Date : </h5><p>{{item.blogs_created_date}}</p>
+         </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

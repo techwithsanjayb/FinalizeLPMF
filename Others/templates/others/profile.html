@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block profile %}
+<h1 style="text-align:center">Profile</h1>
+{% if users != None %}
+<h2>List of All Users </h2>
+{% for user in users %}
+   <a href = "{% url 'userdetail' user.id %}"> {{user}}</a><br/>
+{% endfor %}
+{% endif %}
+{% if messages %}
+{% for message in messages %}
+<small {% if messages.tags %} class= "{{message.tags}}" {% endif %}> {{message}}</small>
+{% endfor %}
+{% endif %}
+<form method="POST" novalidate>
+{% csrf_token %}
+<table border = 0 px ; style="margin-left:auto;margin-right:auto">
+{% for fm in fm %}
+<tr>
+    <td>{{fm.label_tag}}</td>
+    <td>{{fm}}</td>
+    <td>{{fm.errors}}</td>
+</tr>
+{%endfor%}
+<tr><td colspan=2><input type="Submit" value="Update" /></td></tr>
+</table>
+<br/>
+</form>
+{% endblock  %}
+
+

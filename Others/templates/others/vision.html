@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block vision %}
+<div class="container">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-6">
+       <img src= {% static "others/images/vision.jpg" %} style="width:600px;height:400px;">
+      </div>
+      <div class="col-6">
+        <h1>{{article_obj.article_heading_name}}</h1>
+        <p style="text-align:justify"> {{article_obj.article_discription}} </p>
+        <p>Created On {{article_obj.article_created_date}}</p>
+        <p>Last Updated On {{article_obj.article_last_updated_date}}</p>
+        
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}
+

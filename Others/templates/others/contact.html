@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Contact Us - {{ block.super }}
+{% endblock %}
+
+{% block contact %}
+    <div style="margin-left:800px">
+    <h2>Contact </h2>
+    </div>
+    
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-info">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+    
+
+<form method="POST" novalidate>
+{% csrf_token %}
+<table border = 0 px ; style="margin-left:auto;margin-right:auto">
+{% for fm in fm %}
+<tr>
+    <td>{{fm.label_tag}}</td>
+    <td>{{fm}}</td>
+    <td>{{fm.errors}}</td>
+</tr>
+{%endfor%}
+<tr><td colspan=2><button type="submit" class="btn btn-primary">Submit</button></td></tr>
+</table>
+<br/>
+</form>
+
+{% endblock %}

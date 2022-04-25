@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+  {% block disclaimer %}
+  {{ block.super }}
+ <div class="container">
+  <div class="row" style="margin-top:20px;">
+    <div class="col-6">
+     <img src= {% static "others/images/disclaimer.png" %} style="width:600px;height:400px;">
+    </div>
+    <div class="col-6">
+      <h1>{{dataobj.article_heading_name}}</h1>
+      <p style="text-align:justify">{{dataobj.article_discription}}</p>
+      <p>Created On {{dataobj.article_created_date}}</p>
+      <p>Last Updated On {{dataobj.article_last_updated_date}}</p>
+      
+    </div>
+    
+  </div>
+</div>
+  {% endblock disclaimer %}
+
+  
+
+ 

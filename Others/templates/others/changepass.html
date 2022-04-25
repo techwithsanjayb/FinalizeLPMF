@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block changepassword %}
+<div style="margin-left:auto;margin-right:auto;">
+<br/>
+  <div style="margin-left:auto;margin-right:auto;width:900px;height:400px" >
+<h2 style="text-align:center">Change Password Page</h2>
+ 
+<form action="" method = "POST" novalidate>
+{% csrf_token %}
+{% if fm.non_field.errors %}
+{% for error in fm.non_field_errors %}
+    <p>error {{error}}</p>
+{% endfor %}
+{% endif %}
+<table border = 0 px ; style="margin-left:auto;margin-right:auto">
+{% for fm in fm %}
+<tr>
+    <td>{{fm.label_tag}}</td>
+    <td>{{fm}}</td>
+    <td>{{fm.errors}}</td>
+</tr>
+
+{% endfor %}
+</table>
+<br/>
+<input type="submit" value="Change Password" style="margin-left:400px;" />
+</form>
+
+
+
+</div>
+</div>
+{% endblock %}
+
+
