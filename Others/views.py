@@ -2,7 +2,7 @@ from django.shortcuts import render , redirect
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail, mail_admins
 from django.contrib import messages
-from Others.models import Articles,Blogs, Services ,ToolsData , Category , ResourcesData,NewsEvents ,SuccessStoriesCategory ,SuccessStories
+from Others.models import Articles,Blogs, Services ,ToolsData , Category , ResourcesData,NewsEvents ,SuccessStoriesCategory ,SuccessStories, Faq
 from django.contrib.auth import login ,authenticate ,logout ,  update_session_auth_hash
 from django.contrib.auth.models import User
 from .forms import SignUpForm ,EditUserProfileForm , EditAdminProfileForm , CategoryDisplayForm , ContactForm ,SuccessStoriesCategoryDisplayForm
@@ -26,6 +26,19 @@ def about(request):
     about_article_obj = Articles.objects.get(article_heading_name="About us")
     return render(request, 'others/about.html', {'article_obj': about_article_obj})
 
+def home(request):
+    about_article_obj = Articles.objects.get(article_heading_name="About us")
+    vision_article_obj = Articles.objects.get(article_heading_name="Vision")
+    list_NewsEvents = NewsEvents.objects.all()
+    services = Services.objects.all()
+    list_faqs = Faq.objects.all()
+    return render(request, 'others/home.html',{
+        'services_obj': services,
+        'article_obj_about': about_article_obj,
+        'article_obj_vision': vision_article_obj,
+        'dataobj': list_NewsEvents,
+        'faqobj': list_faqs
+        })
 
 def vision(request):
     vision_article_obj = Articles.objects.get(article_heading_name="Vision")
@@ -287,6 +300,9 @@ def display_blogs(request):
     list_Blogs = Blogs.objects.all()
     return render(request, 'others/blogs.html', {'dataobj': list_Blogs})
 
+def display_faq(request):
+    list_faqs = Faq.objects.all()
+    return render(request, 'others/faq.html', {'faqobj': list_faqs})
 
 
 #SUCCESS STORIES PAGE  

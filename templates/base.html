@@ -95,7 +95,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="/">Home</a></li>
+          <li><a class="nav-link scrollto " href="/home">Home</a></li>
           <li class="dropdown"><a class="nav-link scrollto" href="/about"><span>About</span><i class="bi bi-chevron-down"></i></a>
            <ul>
               <li><a href="/vision">Vision</a></li>
@@ -108,6 +108,7 @@
           <li><a class="nav-link scrollto" href="/resources/">Resources</a></li>
           <li><a class="nav-link scrollto" href="/newsandevents">News & Events</a></li>
           <li><a class="nav-link scrollto" href="/">Blogs</a></li>
+          <li><a class="nav-link scrollto" href="/faqs">Faqs</a></li>
            <li class="dropdown"><a href="/success-stories"><span>Success Stories</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/ap-success-stories">AP Success Stories</a></li>
@@ -153,10 +154,17 @@
     </div>
   </div>
 </section><!-- End Hero -->
+  {% block home %}
+  
+  {% endblock %}
+  
   {% block aboutus %}
 
   {% endblock %}
 
+  {% block faq %}
+
+  {% endblock %}
 
   {% block index %}
 
