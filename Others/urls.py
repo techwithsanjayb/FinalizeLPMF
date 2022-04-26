@@ -3,10 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="indexpage"),
+    path('home/', views.home, name="home"),
     path('about/', views.about, name="about"),
     path('vision/', views.vision, name="vision"),
     path('mission/', views.mission, name="mission"),
-    path('services', views.services, name="services"),
+    path('services/', views.services, name="services"),
+    path('faqs/', views.display_faq, name="faqs"),
 #     path('tools/', views.display_tools, name="display_tools"),
     path('toolswithcategory/', views.display_tools_with_category, name="display_tools_with_category"),
     path('resources/', views.display_resources_with_category, name="display_resources_with_category"),
