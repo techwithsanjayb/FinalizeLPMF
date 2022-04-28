@@ -4,10 +4,37 @@
 <h1 style="text-align:center">Profile</h1>
 {% if users != None %}
 <h2>List of All Users </h2>
-{% for user in users %}
-   <a href = "{% url 'userdetail' user.id %}"> {{user}}</a><br/>
-{% endfor %}
+    <ul>
+        <li>
+            {% for user in users %}
+                <a href = "{% url 'userdetail' user.id %}"> {{user}}</a><br/>
+            {% endfor %}
+        </li>
+    </ul>
 {% endif %}
+
+
+{% if users != None %}
+<h2>List of All Users </h2>
+    <ul>
+        <li>
+            
+            <div style="width:600px;margin-left:500px;text-align:center">
+                <select>
+                {% for user in users %}
+                    <option><a href = "{% url 'userdetail' user.id %}"> {{user}}</a></option>
+                {% endfor %}
+                </select>
+                <br/>          
+            </div>
+           
+        </li>
+    </ul>
+{% endif %}
+
+
+
+
 {% if messages %}
 {% for message in messages %}
 <small {% if messages.tags %} class= "{{message.tags}}" {% endif %}> {{message}}</small>
