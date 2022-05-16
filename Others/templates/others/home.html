@@ -5,11 +5,11 @@
 
 <div class="row" style="margin-top:20px;">
       <div class="col-6" style="margin-left:10px;width: 518px;">
-       <img src= {% static "others/images/aboutus.jpg" %} style="width:500px;height:470px;">
+       <img src= {% static "others/images/aboutus.png" %} style="width:500px;height:470px;">
       </div>
-      <div class="col-6" style="width:791px;height:400px;">
+      <div class="col-6" style="width:791px;height:400px;paddiing-left:20px">
         <h1 style="text-align:center">{{article_obj_about.article_heading_name}}</h1>
-        <p style="text-align:justify"> {{article_obj_about.article_discription}} </p>      
+        <p style="text-align:justify ;line-height: 2;font-size: 18px;"> {{article_obj_about.article_discription}} </p>      
       </div>
       
 </div>
@@ -17,7 +17,7 @@
      <br><br>
 <div class="row" style="margin-top:40px">
       <div class="col">
-<section id="testimonials" class="testimonials">
+        <section id="testimonials" class="testimonials">
       <div class="container" data-aos="zoom-in">
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -58,8 +58,6 @@
 
         </div>
      </div>
-    
-
 </div>
 
 
@@ -78,6 +76,33 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</section><!-- End Featured Services Section -->
+    <div>
+</div>
+
+<!---->
+
+<div class="row">
+    <div class="col-12">
+    <section id="featured-services" class="featured-services">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <h2 style="text-align:center;">Services</h2><br>
+    </div><br/>
+    <div class="row">
+      <div col="6" style="width:400px">
+        <img src= {% static "others/images/services.png" %} style="width:500px;height:470px;">
+      </div>
+      <div col="6" style="width:800px;padding-left:120px">
+      {% for service in services_obj %}
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon"><i class="bx bxl-dribbble"></i></div>
+          <h4 class="title"><a href="">{{service.service_name}}</a></h4>
+        </div>
+      {% endfor %}
+      </div>      
     </div>
   </div>
 </section><!-- End Featured Services Section -->
@@ -118,10 +143,5 @@
 </div>
 
 </div>
-
-
-
-
-
 
 {% endblock %}

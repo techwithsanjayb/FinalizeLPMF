@@ -29,9 +29,9 @@ class SuccessStoriesAdmin(admin.ModelAdmin):
 
 class SuccessStoriesCategoryAdmin(admin.ModelAdmin):
     list_display= ('success_stories_category_name','success_stories_category_created_date')
-    #search_fields = ['success_stories_category_name', 'success_stories_category_created_date']
-    #ordering = ['success_stories_category_created_date']
-    #list_filter = ['success_stories_category_name', 'success_stories_category_created_date'] 
+    search_fields = ['success_stories_category_name', 'success_stories_category_created_date']
+    ordering = ['success_stories_category_created_date']
+    list_filter = ['success_stories_category_name', 'success_stories_category_created_date'] 
 
 class NewsEventsAdmin(admin.ModelAdmin):
     list_display = ('news_events_detail','news_events_link')

@@ -89,7 +89,7 @@ def display_tools_with_category(request):
             print(cat_name)
             tools_list = ToolsData.objects.filter(tool_category = cat_name)
             print(tools_list)
-            page = request.GET.get('page')  
+            page = request.GET.ge('page')
             paginator = Paginator(tools_list,3)
             try:
                 post_list = paginator.page(page)
@@ -101,7 +101,7 @@ def display_tools_with_category(request):
            
     else:
         tools_list = ToolsData.objects.all()
-        cat_list =CategoryDisplayForm()
+        tcat_list =CategoryDisplayForm()
         page = request.GET.get('page')  
         paginator = Paginator(tools_list,3)
     

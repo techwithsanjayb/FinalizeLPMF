@@ -6,6 +6,31 @@ from django.conf import settings
 
 # Create your models here.
 
+
+
+'''
+AUTHOR NAME      : Sanjay Bhargava
+CREATED DATE     : 15-05-2022
+MODEL NAME       : Article
+DISCRIPTION      : THE BELOW MODEL STORES TEXT CONTENT FOR THE ARTICLES OF THE DIFFERENT PAGES OF WEBSITE.
+'''
+
+
+class Article(models.Model):
+    Article_Name = models.CharField(max_length=100)
+    Article_Discription = models.CharField(max_length=1000)
+    Article_Menu_ID = models.ForeignKey(TopMenuItems, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Article_Name"
+        ordering = ['Article_Menu_ID']
+
+    def __str__(self):
+        return self.Article_Name
+
+
+
+
 class ResourcesData(models.Model):
     resource_heading_name = models.CharField(max_length=100)
     resource_discription = models.CharField(max_length=5000)
@@ -256,7 +281,7 @@ class City(models.Model):
         return self.city_name
 
 
-# USER_PROFILE TABLES MODEL
+# USER_PROFILE TABELS MODEL
 
 
 # class UserProfile(models.Model):
